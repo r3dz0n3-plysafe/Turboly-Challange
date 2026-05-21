@@ -1,4 +1,6 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://i.ibb.co.com/gZMMzct0/Screenshot-1.png" width="400" alt="Laravel Logo"></a></p>
+<p align="center">
+<a href="https://ibb.co.com/4RZZP04b"><img src="https://i.ibb.co.com/gZMMzct0/Screenshot-1.png" alt="Screenshot-1" border="0"></a>
+</p>
 
 
 ```bash
