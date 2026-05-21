@@ -27,11 +27,11 @@
 </head>
 <body class="font-sans antialiased">
 <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-    @include('layouts.navigation')
+    @include('tablet.layouts.navigation')
 
     <!-- Page Content -->
     <main>
-        <div class="p-4 sm:ml-64 mt-14">
+        <div class="p-4 lg:ml-64 mt-14">
             {{--<!-- Page Heading -->
             @isset($header)
                 <header class="bg-white dark:bg-gray-800 shadow-sm">
