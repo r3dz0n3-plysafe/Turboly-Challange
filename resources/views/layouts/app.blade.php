@@ -14,23 +14,28 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="font-sans antialiased">
+<body class="font-sans antialiased dark">
 <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
     @include('layouts.navigation')
 
-    <!-- Page Heading -->
-    @isset($header)
-        <header class="bg-white dark:bg-gray-800 shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                {{ $header }}
-            </div>
-        </header>
-    @endisset
-
     <!-- Page Content -->
     <main>
-        {{ $slot }}
+        <div class="p-4 sm:ml-64 mt-14">
+            {{--<!-- Page Heading -->
+            @isset($header)
+                <header class="bg-white dark:bg-gray-800 shadow-sm">
+                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                        {{ $header }}
+                    </div>
+                </header>
+            @endisset--}}
+            <div class="p-4 border-1 border-default border-dashed rounded-base">
+                {{ $slot }}
+            </div>
+        </div>
     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
 </div>
 </body>
 </html>
