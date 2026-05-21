@@ -31,7 +31,7 @@
 
     <!-- Page Content -->
     <main>
-        <div class="p-4 lg:ml-64 mt-14">
+        <div class="p-4 mt-14">
             {{--<!-- Page Heading -->
             @isset($header)
                 <header class="bg-white dark:bg-gray-800 shadow-sm">
