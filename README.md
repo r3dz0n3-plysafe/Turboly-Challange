@@ -36,6 +36,7 @@
 8. Flowbite Component
 9. Fontawesome Icons
 10. jQuery
+11. Adaptive Design
 
 ### Installation
 
