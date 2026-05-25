@@ -18,7 +18,7 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $tasks = $this->taskService->getDataUserForDashboard('', 'due_date', 5);
+        $tasks = $this->taskService->getDataUserForDashboard('', 'due_date', 5, '');
         $active = $tasks['active']->total();
         $complete = $tasks['completed']->total();
         $dueToday = $this->taskService->getDueTodayAlerts(auth()->id())->count();

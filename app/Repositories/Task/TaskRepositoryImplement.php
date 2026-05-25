@@ -21,13 +21,17 @@ class TaskRepositoryImplement extends Eloquent implements TaskRepository
         $this->model = $model;
     }
 
-    public function getUserPaginatedTasks($userId, $search, $sortBy, int $perPage)
+    public function getUserPaginatedTasks($userId, $search, $sortBy, int $perPage, $priority)
     {
         $query = $this->model->select('id', 'description', 'due_date', 'priority', 'is_completed')
             ->where('user_id', $userId);
 
         if (!empty($search)) {
             $query->where('description', 'like', '%' . $search . '%');
+        }
+
+        if (!empty($priority)) {
+            $query->where('priority', '=', $priority);
         }
 
         // Fitur Pengurutan dinamis
@@ -75,5 +79,10 @@ class TaskRepositoryImplement extends Eloquent implements TaskRepository
             ->whereDate('due_date', Carbon::today())
             ->where('is_completed', false)
             ->get();
+    }
+
+    public function deleteTaskByUser($userId, $id)
+    {
+        return $this->model->where('user_id', $userId)->findOrFail($id)->delete();
     }
 }

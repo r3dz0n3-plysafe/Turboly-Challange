@@ -55,12 +55,19 @@ class TaskServiceImplement extends ServiceApi implements TaskService
         return $this->mainRepository->toggleCompleted($taskId, $userId);
     }
 
-    public function getDataUserForDashboard($search, $sortBy, int $perPage)
+    public function getDataUserForDashboard($search, $sortBy, int $perPage, $priority)
     {
         $userId = auth()->id();
 
         $todayStr = Carbon::today()->toDateString();
 
-        return $this->mainRepository->getUserPaginatedTasks($userId, $search, $sortBy, $perPage);
+        return $this->mainRepository->getUserPaginatedTasks($userId, $search, $sortBy, $perPage, $priority);
+    }
+
+    public function deleteTask($id)
+    {
+        $userId = auth()->id();
+
+        return $this->mainRepository->deleteTaskByUser($userId, $id);
     }
 }

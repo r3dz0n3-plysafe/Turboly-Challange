@@ -16,6 +16,8 @@ interface TaskService extends BaseService
 
     public function toggleCompleted($taskId, $userId);
 
-    public function getDataUserForDashboard($search, $sortBy, int $perPage);
+    public function getDataUserForDashboard($search, $sortBy, int $perPage, $priority);
+
+    public function deleteTask($id);
 
 }

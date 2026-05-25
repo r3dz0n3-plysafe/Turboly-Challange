@@ -23,12 +23,14 @@ class TaskController extends Controller
         if ($request->ajax()) {
             $search = $request->input('search', '');
             $sortBy = $request->input('sortBy', 'due_date');
+            $filterBy = $request->input('filterBy', '');
             $perPage = 5;
 
             $data = $this->taskService->getDataUserForDashboard(
                 $search,
                 $sortBy,
-                $perPage
+                $perPage,
+                $filterBy
             );
             return response()->json($data);
         }
@@ -51,5 +53,12 @@ class TaskController extends Controller
         $this->taskService->toggleCompleted($id, auth()->id());
 
         return redirect()->back()->with('success', 'Task marked as completed.');
+    }
+
+    public function taskDelete(Request $request, $id)
+    {
+        $this->taskService->deleteTask($id);
+
+        return redirect()->back()->with('success', 'Task deleted successfully.');
     }
 }

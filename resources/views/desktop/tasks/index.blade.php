@@ -78,6 +78,16 @@
                     <option value="priority">🔥 Highest Priority</option>
                 </select>
             </div>
+            <div class="flex items-center justify-end gap-2">
+                <label class="text-xs font-medium dark:text-neutral-400 whitespace-nowrap"><i
+                            class="fa-solid fa-arrow-down-short-wide text-neutral-500"></i> Filter By:</label>
+                <select id="priority-filter"
+                        class="text-xs px-3 py-1.5 border border-neutral-300 dark:border-neutral-800 rounded-lg bg-neutral-secondary-medium dark:text-neutral-200 font-medium focus:outline-none focus:border-indigo-500 transition">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
@@ -198,6 +208,7 @@
 
         let currentSearch = '';
         let currentSortBy = 'due_date';
+        let filterPriority = '';
         let pageActive = 1;
         let pageCompleted = 1;
         let searchTimeout = null;
@@ -221,6 +232,7 @@
                 data: {
                     search: currentSearch,
                     sortBy: currentSortBy,
+                    filterBy: filterPriority,
                     page_active: pageActive,
                     page_completed: pageCompleted
                 },
@@ -268,7 +280,7 @@
                     </div>
                   </div>
                 </div>
-                <!--<button data-id="${task.id}" class="btn-delete text-red-400 text-xs p-1 transition cursor-pointer"><i class="fa-regular fa-trash-can"></i></button>-->
+                <button data-id="${task.id}" class="btn-delete text-red-400 text-xs p-1 transition cursor-pointer"><i class="fa-regular fa-trash-can"></i></button>
               </div>
             `;
                 });
@@ -323,6 +335,11 @@
             fetchDashboardData();
         });
 
+        $('#priority-filter').on('change', function () {
+            filterPriority = $(this).val();
+            fetchDashboardData();
+        });
+
         $('#add-task-form').on('submit', function (e) {
             e.preventDefault();
             $.ajax({
@@ -353,17 +370,17 @@
             });
         });
 
-        /*$(document).on('click', '.btn-delete', function () {
+        $(document).on('click', '.btn-delete', function () {
             if (!confirm("Delete this task?")) return;
             let id = $(this).data('id');
             $.ajax({
-                url: `/tasks/${id}`,
-                method: 'DELETE',
+                url: `/tasks/delete/${id}`,
+                method: 'POST',
                 success: function () {
                     fetchDashboardData();
                 }
             });
-        });*/
+        });
 
         fetchDashboardData();
     });

@@ -16,5 +16,7 @@ interface TaskRepository extends Repository
 
     public function getTasksDueToday($userId);
 
-    public function getUserPaginatedTasks($userId, $search, $sortBy, int $perPage);
+    public function getUserPaginatedTasks($userId, $search, $sortBy, int $perPage, $priority);
+
+    public function deleteTaskByUser($userId, $id);
 }
